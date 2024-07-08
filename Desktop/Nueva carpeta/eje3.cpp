@@ -2,40 +2,37 @@
 #include <string>
 using namespace std;
 int main() {
-    const int DAYS = 7;
-    string dayNames[DAYS] = {"Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"};
-    float tempMin[DAYS], tempMax[DAYS], tempMedia[DAYS];
-    float minTemp = FLT_MAX;
-    int minTempDayIndex = -1;
-    for (int i = 0; i < DAYS; ++i) {
-        cout<<"Ingrese la temperatura mínima para "<<dayNames[i]<<": ";
-        cin>>tempMin[i];
-        cout<<"Ingrese la temperatura máxima para "<<dayNames[i] << ": ";
-        cin>>tempMax[i];
-        tempMedia[i]=(tempMin[i]+tempMax[i])/2;
-        if (tempMin[i]<minTemp){
-            minTemp=tempMin[i];
-            minTempDayIndex=i;
+    const int dias = 7;
+    string dayNames[dias] = {"Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado", "Domingo"};
+    float tempmin[dias], tempmax[dias], tempmedia[dias];
+    float mintemp = FLT_MAX;
+    int mintempdiaIndex = -1;
+    for(int i = 0; i<dia; ++i) {
+        cout<<"Ingrese la temperatura minima para "<<diaNames[i]<<": ";cin>>tempmin[i];
+        cout<<"Ingrese la temperatura maxima para "<<diaNames[i] << ": ";cin>>tempmax[i];
+        tempmedia[i]=(tempmin[i]+tempmax[i])/2;
+        if(tempmin[i]<mintemp){
+            mintemp=tempmin[i];
+            mintempdiaIndex=i;
         }
     }
-    cout << "\nTemperaturas medias de cada día:" << endl;
-    for (int i = 0; i < DAYS; ++i) {
-        cout << dayNames[i] << ": " << tempMedia[i] << "°C" << endl;
+    cout<<"\nTemperaturas medias de cada dia:"<<endl;
+    for (int i=0; i<dia; ++i) {
+        cout<<dianames[i]<<": "<<tempmedia[i]<<"°C"<<endl;
     }
-    cout << "\nEl día con la menor temperatura mínima es " << dayNames[minTempDayIndex] << " con " << minTemp << "°C." << endl;
-    float searchTemp;
-    cout << "\nIngrese una temperatura máxima para buscar los días que coinciden: ";
-    cin >> searchTemp;
-    bool found = false;
-    cout << "Días con temperatura máxima de " << searchTemp << "°C:" << endl;
-    for (int i = 0; i < DAYS; ++i) {
-        if (tempMax[i] == searchTemp) {
-            cout << dayNames[i] << endl;
+    cout<<"\nEl dia con la menor temperatura minima es "<<dianames[mintempdiaIndex] <<" con "<<mintemp<<"°C."<<endl;
+    float buscartemp;
+    cout<<"\nIngrese una temperatura maxima para buscar los días que coinciden: ";cin>>buscartemp;
+    bool found=false;
+    cout<<"Dias con temperatura máxima de "<<buscartemp<<"°C:"<<endl;
+    for (int i=0; i<dia; ++i) {
+        if (m[i] ==buscartemp) {
+            cout <<dianames[i] << endl;
             found = true;
         }
     }
     if (!found) {
-        cout << "No hay ningún día con esa temperatura máxima." << endl;
+        cout<<"No hay ningun dia con esa temperatura maxima."<<endl;
     }
 
     return 0;
