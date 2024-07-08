@@ -1,7 +1,7 @@
 #include <iostream>
 #include <string>
 using namespace std;
-const int MAX_CELDAS = 100;
+const int MAX_CELDAS = 100;//la siguiente es una funcion para encontrar los datos comunes y guardarlos
 int encontrarComunes(string clase1[], int tam1, string clase2[], int tam2, string comunes[]) {
     int k = 0;
     for (int i = 0; i < tam1; ++i) {
@@ -18,25 +18,20 @@ int encontrarComunes(string clase1[], int tam1, string clase2[], int tam2, strin
 int main() {
     int tam1, tam2;
     do {
-        cout << "Ingrese la cantidad de estudiantes en Fundamentos de Programación (max " << MAX_CELDAS << "): ";
-        cin >> tam1;
+        cout << "Ingrese la cantidad de estudiantes en Fundamentos de Programacion (max " << MAX_CELDAS << "): ";cin >> tam1;
     } while (tam1 < 1 || tam1 > MAX_CELDAS);
-    
     string fundamentos[MAX_CELDAS];
-    
-    cout << "Ingrese los nombres de los estudiantes en Fundamentos de Programación:\n";
+    cout << "Ingrese los nombres de los estudiantes en Fundamentos de Programacion:\n";
     for (int i = 0; i < tam1; ++i) {
         cout << "Estudiante " << i + 1 << ": ";
         cin >> fundamentos[i];
     }
     do {
-        cout << "Ingrese la cantidad de estudiantes en Programación Gráfica (max " << MAX_CELDAS << "): ";
+        cout << "Ingrese la cantidad de estudiantes en Programacion Grafica (max " << MAX_CELDAS << "): ";
         cin >> tam2;
     } while (tam2 < 1 || tam2 > MAX_CELDAS);
-    
-    string grafica[MAX_CELDAS];
-    
-    cout << "Ingrese los nombres de los estudiantes en Programación Gráfica:\n";
+     string grafica[MAX_CELDAS];
+    cout << "Ingrese los nombres de los estudiantes en Programación Grafica:\n";
     for (int i = 0; i < tam2; ++i) {
         cout << "Estudiante " << i + 1 << ": ";
         cin >> grafica[i];
@@ -48,7 +43,7 @@ int main() {
         for (int i = 0; i < numComunes; ++i) {
             cout << comunes[i] << endl;
         }
-        cout << "Número de estudiantes comunes: " << numComunes << endl;
+        cout << "Numero de estudiantes comunes: " << numComunes << endl;
     } else {
         cout << "\nNo hay estudiantes comunes en ambas asignaturas." << endl;
     }
