@@ -3,36 +3,36 @@
 using namespace std;
 int main() {
     const int MAX = 100;
-    int numFundamentos, numGrafica;
+    int numf, numg;
     string fundamentos[MAX], grafica[MAX], comunes[MAX];
-    int comunesCount = 0;
-    cout<<"Ingrese el número de estudiantes en Fundamentos de Programación: ";cin>>numFundamentos;
+    int comunesc = 0;
+    cout<<"Ingrese el numero de estudiantes en Fundamentos de Programacion: ";cin>>numf;
     cin.ignore();
-    cout<<"Ingrese los nombres de los estudiantes en Fundamentos de Programación:" << endl;
-    for (int i=0; i<numFundamentos; ++i) {
-        cout<< "Estudiante "<<i + 1<<": ";
+    cout<<"Ingrese los nombres de los estudiantes en Fundamentos de Programacion:" << endl;
+    for (int i=0; i<numf; ++i) {
+        cout<<"Estudiante "<<i+1<<": ";
         getline(cin, fundamentos[i]);
     }
-    cout<<"Ingrese el número de estudiantes en Programación Gráfica: ";cin >> numGrafica;
+    cout<<"Ingrese el numero de estudiantes en Programacion Grafica: ";cin >> numg;
     cin.ignore();
-    cout << "Ingrese los nombres de los estudiantes en Programación Gráfica:" << endl;
-    for (int i = 0; i < numGrafica; ++i) {
-        cout << "Estudiante " << i + 1 << ": ";
+    cout << "Ingrese los nombres de los estudiantes en Programacion Grafica:" << endl;
+    for (int i=0; i<numg; ++i) {
+        cout<<"Estudiante "<<i + 1<<": ";
         getline(cin, grafica[i]);
     }
-    for (int i = 0; i < numFundamentos; ++i) {
-        for (int j = 0; j < numGrafica; ++j) {
+    for (int i = 0; i < numf; ++i) {
+        for (int j = 0; j < numg; ++j) {
             if (fundamentos[i] == grafica[j]) {
-                comunes[comunesCount++] = fundamentos[i];
+                comunes[comunesc++] = fundamentos[i];
             }
         }
     }
     cout<<"\nEstudiantes comunes en ambas asignaturas:"<<endl;
-    if (comunesCount > 0) {
-        for (int i=0; i<comunesCount;++i) {
+    if (comunesc > 0) {
+        for (int i=0; i<comunesc;++i) {
             cout<<comunes[i]<<endl;
         }
-        cout<<"Número total de estudiantes comunes: "<<comunesCount<<endl;
+        cout<<"Numero total de estudiantes comunes: "<<comunesc<<endl;
     } else {
         cout<<"No hay estudiantes comunes en ambas asignaturas."<<endl;
     }
