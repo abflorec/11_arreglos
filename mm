@@ -1,119 +1,120 @@
 #include <iostream>
 #include <string>
-
 using namespace std;
-
-const int MAX_COCHES = 100; // Definimos un tamaño máximo para el arreglo
-
-struct Coche {
+const int maxcoches = 100; // Definimos un tamaño máximo para el arreglo
+struct Coche
+{
     string marca;
     int anio;
     double precio;
     bool alquilado; // true = alquilado, false = disponible
 };
-
-// Función para añadir un coche
-void agregarCoche(Coche autos[], int &numAutos) {
-    if (numAutos >= MAX_COCHES) {
-        cout << "No se pueden añadir más coches. Capacidad máxima alcanzada.\n";
+void agregarCoche(Coche autos[], int &numautos)
+{ // funcion para añadir coche
+    if (numautos >= maxcoches)
+    {
+        cout << "No se pueden agregar mas coches,capacidad maxima alcanzada.\n";
         return;
     }
-
     Coche nuevo;
     cout << "Ingrese la marca del coche: ";
     cin >> nuevo.marca;
-    cout << "Ingrese el año del coche: ";
+    cout << "Ingrese el anio del coche: ";
     cin >> nuevo.anio;
-    cout << "Ingrese el precio del alquiler por día: ";
+    cout << "Ingrese el precio del alquiler por dia: ";
     cin >> nuevo.precio;
     nuevo.alquilado = false; // Al iniciar, el coche está disponible
-    autos[numAutos] = nuevo;
-    numAutos++;
-    cout << "Coche añadido exitosamente.\n";
+    autos[numautos] = nuevo;
+    numautos++;
+    cout << "Coche agregado exitosamente.\n";
 }
-
-// Función para alquilar un coche
-void alquilarCoche(Coche autos[], int numAutos) {
-    bool hayDisponibles = false;
-
+void alquilarcoche(Coche autos[], int numautos)
+{                                // funcion para alquilar coche
+    bool hayDisponibles = false; // true disponible
     cout << "Lista de coches disponibles:\n";
-    for (int i = 0; i < numAutos; i++) {
-        if (!autos[i].alquilado) {
+    for (int i = 0; i < numautos; i++)
+    {
+        if (!autos[i].alquilado)
+        {
             cout << i + 1 << ". " << autos[i].marca << " " << autos[i].anio << " - $" << autos[i].precio << "/día\n";
             hayDisponibles = true;
         }
     }
-
-    if (!hayDisponibles) {
+    if (!hayDisponibles)
+    {
         cout << "No hay coches disponibles para alquilar.\n";
         return;
     }
-
     int opcion;
-    cout << "Seleccione el número del coche que desea alquilar: ";
+    cout << "Seleccione el numero del coche que desea alquilar: ";
     cin >> opcion;
-
-    if (opcion > 0 && opcion <= numAutos && !autos[opcion - 1].alquilado) {
+    if (opcion > 0 && opcion <= numautos && !autos[opcion - 1].alquilado)
+    {
         autos[opcion - 1].alquilado = true;
-        cout << "El coche ha sido alquilado con éxito.\n";
-    } else {
-        cout << "Selección inválida o coche ya alquilado.\n";
+        cout << "El coche ha sido alquilado satisfactoriamente\n";
+    }
+    else
+    {
+        cout << "Seleccion invalida o coche ya alquilado.\n";
     }
 }
-
-// Función para mostrar coches disponibles
-void mostrarDisponibles(const Coche autos[], int numAutos) {
+// Funcion para mostrar coches disponibles
+void mostrardisponibles(const Coche autos[], int numAutos)
+{
     bool hayDisponibles = false;
-
     cout << "Coches disponibles:\n";
-    for (int i = 0; i < numAutos; i++) {
-        if (!autos[i].alquilado) {
+    for (int i = 0; i < numAutos; i++)
+    {
+        if (!autos[i].alquilado)
+        {
             cout << autos[i].marca << " " << autos[i].anio << " - $" << autos[i].precio << "/día\n";
             hayDisponibles = true;
         }
     }
-
-    if (!hayDisponibles) {
+    if (!hayDisponibles)
+    {
         cout << "No hay coches disponibles.\n";
     }
 }
 
-// Función para mostrar el menú
-void mostrarMenu() {
-    cout << "\n--- Menú de Alquiler de Autos ---\n";
+// Funcion para mostrar el menú
+void mostrarMenu()
+{
+    cout << "\n--- Menu de Alquiler de Autos ---\n";
     cout << "1. Agregar coche\n";
     cout << "2. Alquilar coche\n";
     cout << "3. Mostrar coches disponibles\n";
     cout << "4. Salir\n";
-    cout << "Seleccione una opción: ";
+    cout << "Seleccione una opcion: ";
 }
 
-int main() {
-    Coche autos[MAX_COCHES]; // Arreglo estático de coches
-    int numAutos = 0; // Contador de coches añadidos
+int main()
+{
+    Coche autos[maxcoches]; // este es un arreglo estático de coches
+    int numAutos = 0;       // es un contador de coches añadidos
     int opcion;
-
-    do {
+    do
+    {
         mostrarMenu();
         cin >> opcion;
-
-        switch (opcion) {
-            case 1:
-                agregarCoche(autos, numAutos);
-                break;
-            case 2:
-                alquilarCoche(autos, numAutos);
-                break;
-            case 3:
-                mostrarDisponibles(autos, numAutos);
-                break;
-            case 4:
-                cout << "Saliendo del programa...\n";
-                break;
-            default:
-                cout << "Opción inválida, intente nuevamente.\n";
+        switch (opcion)
+        {
+        case 1:
+            agregarCoche(autos, numAutos);
+            break;
+        case 2:
+            alquilarcoche(autos, numAutos);
+            break;
+        case 3:
+            mostrardisponibles(autos, numAutos);
+            break;
+        case 4:
+            cout << "Saliendo del programa\n";
+            break;
+        default:
+            cout << "Opcion invalida, intentelo otra vez.\n";
         }
-    } while (opcion != 4);
-
+    } while (opcion != 4); // permite usar varias veces el menu de alquiler de autos
     return 0;
 }
+
